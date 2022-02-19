@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Welcome.dart';
+import 'Rent.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,6 +18,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blueGrey,
         ),
-        home: const Welcome());
+        home: const Rent());
   }
 }
