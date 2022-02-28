@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'src/locations.dart' as locations;
+import 'RentSearch.dart';
 
 class Rent extends StatefulWidget {
   const Rent({Key? key}) : super(key: key);
@@ -9,9 +12,61 @@ class Rent extends StatefulWidget {
 }
 
 class _RentState extends State<Rent> with TickerProviderStateMixin {
+  DateTime selectedDate = DateTime.now();
   late TabController _tabController;
   bool isChecked = false;
   int tabBar = 0;
+  int currentBottomNav = 1;
+  late GoogleMapController mapController;
+  final Map<String, Marker> _markers = {};
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime(2015, 8),
+        lastDate: DateTime(2101));
+    if (picked != null && picked != selectedDate)
+      setState(() {
+        selectedDate = picked;
+      });
+  }
+
+  final LatLng _center = const LatLng(31.579646, 74.354349);
+
+  void _onMapCreated(GoogleMapController controller) async {
+    // BitmapDescriptor markerbitmap = await BitmapDescriptor.fromAssetImage(
+    //   ImageConfiguration(size: Size(50, 50)),
+    //   "car.png",
+    // );
+    setState(() {
+      _markers.clear();
+      _markers['Anarkali'] = Marker(
+        markerId: MarkerId(
+          'Anarkali',
+        ),
+        position: LatLng(31.571359, 74.310355),
+        infoWindow: InfoWindow(title: 'Car', snippet: 'Available'),
+        icon: BitmapDescriptor.defaultMarker,
+      );
+      _markers['Sultanpura'] = Marker(
+        markerId: MarkerId(
+          'Sultanpura',
+        ),
+        position: LatLng(31.5816, 74.341104),
+        infoWindow: InfoWindow(title: 'Car', snippet: 'Available'),
+        icon: BitmapDescriptor.defaultMarker,
+      );
+    });
+    _markers['Azadi Chowk'] = Marker(
+      markerId: MarkerId(
+        'Azadi Chowk',
+      ),
+      position: LatLng(31.5908, 74.3063),
+      infoWindow: InfoWindow(title: 'Car', snippet: 'Available'),
+      icon: BitmapDescriptor.defaultMarker,
+    );
+  }
+
   @override
   void initState() {
     super.initState();
@@ -28,17 +83,15 @@ class _RentState extends State<Rent> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SlidingUpPanel(
-          minHeight: 120,
-          maxHeight: 450,
-          body: Row(
-            children: [
-              Expanded(
-                child: Container(
-                  color: Colors.deepOrange,
-                  child: const Text('def'),
-                ),
-              )
-            ],
+          minHeight: MediaQuery.of(context).size.height * .18,
+          maxHeight: MediaQuery.of(context).size.height * .60,
+          body: GoogleMap(
+            onMapCreated: _onMapCreated,
+            initialCameraPosition: CameraPosition(
+              target: _center,
+              zoom: 11.0,
+            ),
+            markers: _markers.values.toSet(),
           ),
           panel: Column(
             children: [
@@ -54,7 +107,7 @@ class _RentState extends State<Rent> with TickerProviderStateMixin {
               ),
               Container(
                 margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                color: Colors.white30,
+                color: Color(0xffffffff),
                 height: 30,
                 child: Row(
                   children: [
@@ -103,11 +156,18 @@ class _RentState extends State<Rent> with TickerProviderStateMixin {
                       child: Container(
                         margin: EdgeInsets.fromLTRB(30, 0, 30, 0),
                         padding: EdgeInsets.fromLTRB(0, 40, 0, 40),
-                        height: 350,
+                        height: MediaQuery.of(context).size.height * 0.50,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             TextFormField(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const RentSearch()));
+                              },
                               decoration: InputDecoration(
                                   border: UnderlineInputBorder(),
                                   label: Text(
@@ -140,9 +200,15 @@ class _RentState extends State<Rent> with TickerProviderStateMixin {
                             Row(
                               children: [
                                 Container(
-                                  width: 130,
+                                  width:
+                                      (MediaQuery.of(context).size.width - 80) *
+                                          0.50,
                                   child: TextFormField(
-                                    initialValue: 'FEB 20 | 12:00PM',
+                                    onTap: () {
+                                      _selectDate(context);
+                                    },
+                                    initialValue: "${selectedDate.toLocal()}"
+                                        .split(' ')[0],
                                     decoration: InputDecoration(
                                         border: UnderlineInputBorder(),
                                         label: Text(
@@ -156,9 +222,11 @@ class _RentState extends State<Rent> with TickerProviderStateMixin {
                                 Padding(
                                     padding: EdgeInsets.fromLTRB(10, 0, 10, 0)),
                                 Container(
-                                  width: 130,
+                                  width:
+                                      (MediaQuery.of(context).size.width - 80) *
+                                          0.50,
                                   child: TextFormField(
-                                    initialValue: 'FEB 23 | 12:00PM',
+                                    initialValue: "2022-02-25".split(' ')[0],
                                     decoration: InputDecoration(
                                         border: UnderlineInputBorder(),
                                         label: Text(
@@ -210,64 +278,112 @@ class _RentState extends State<Rent> with TickerProviderStateMixin {
           footer: GestureDetector(
             onTap: () {},
             child: Container(
-              decoration: const BoxDecoration(color: Colors.white70),
-              height: 60,
+              decoration: const BoxDecoration(color: Color(0xfff3f3f3)),
+              height: MediaQuery.of(context).size.height * 0.09,
               width: MediaQuery.of(context).size.width,
               padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      setState(() {
+                        currentBottomNav = 1;
+                      });
+                    },
                     child: Container(
                       child: Column(
-                        children: const [
-                          Icon(Icons.person),
-                          Text(
+                        children: [
+                          ImageIcon(
+                            const AssetImage("key-chain.png"),
+                            size: 23,
+                            color: currentBottomNav == 1
+                                ? Colors.deepOrange
+                                : Colors.black,
+                          ),
+                          const Padding(
+                              padding: EdgeInsets.fromLTRB(0, 5, 0, 0)),
+                          const Text(
                             'Rent',
-                            style: TextStyle(fontSize: 11),
+                            style: TextStyle(fontSize: 9),
                           ),
                         ],
                       ),
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      setState(() {
+                        currentBottomNav = 2;
+                      });
+                    },
                     child: Container(
                       child: Column(
-                        children: const [
-                          Icon(Icons.person),
-                          Text(
+                        children: [
+                          ImageIcon(
+                            const AssetImage("share.png"),
+                            size: 23,
+                            color: currentBottomNav == 2
+                                ? Colors.deepOrange
+                                : Colors.black,
+                          ),
+                          const Padding(
+                              padding: EdgeInsets.fromLTRB(0, 5, 0, 0)),
+                          const Text(
                             'Share',
-                            style: TextStyle(fontSize: 11),
+                            style: TextStyle(fontSize: 9),
                           ),
                         ],
                       ),
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      setState(() {
+                        currentBottomNav = 3;
+                      });
+                    },
                     child: Container(
                       child: Column(
-                        children: const [
-                          Icon(Icons.person),
-                          Text(
+                        children: [
+                          ImageIcon(
+                            const AssetImage("ride.png"),
+                            size: 23,
+                            color: currentBottomNav == 3
+                                ? Colors.deepOrange
+                                : Colors.black,
+                          ),
+                          const Padding(
+                              padding: EdgeInsets.fromLTRB(0, 5, 0, 0)),
+                          const Text(
                             'Ride',
-                            style: TextStyle(fontSize: 11),
+                            style: TextStyle(fontSize: 9),
                           ),
                         ],
                       ),
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      setState(() {
+                        currentBottomNav = 4;
+                      });
+                    },
                     child: Container(
                       child: Column(
-                        children: const [
-                          Icon(Icons.person),
-                          Text(
+                        children: [
+                          ImageIcon(
+                            const AssetImage("account.png"),
+                            size: 23,
+                            color: currentBottomNav == 4
+                                ? Colors.deepOrange
+                                : Colors.black,
+                          ),
+                          const Padding(
+                              padding: EdgeInsets.fromLTRB(0, 5, 0, 0)),
+                          const Text(
                             'Account',
-                            style: TextStyle(fontSize: 11),
+                            style: TextStyle(fontSize: 9),
                           ),
                         ],
                       ),
