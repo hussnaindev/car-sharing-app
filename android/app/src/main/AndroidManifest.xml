@@ -4,6 +4,9 @@
         android:label="ride_sharing_app"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCuMORohnS95h3-n4v-WToDOpte15YSQ-I"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

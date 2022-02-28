@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:ride_sharing_app/RentCarDetails.dart';
+import 'package:ride_sharing_app/ShowStations.dart';
 import 'Welcome.dart';
 import 'Rent.dart';
+import 'RentSearch.dart';
+import 'ShowStations.dart';
+import 'RentCarDetails.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,6 +23,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blueGrey,
         ),
-        home: const Rent());
+        home: const RentCarDetails());
   }
 }
