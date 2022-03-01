@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ride_sharing_app/ShowStations.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'src/locations.dart' as locations;
@@ -240,7 +241,13 @@ class _RentState extends State<Rent> with TickerProviderStateMixin {
                               ],
                             ),
                             GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const ShowStations()));
+                              },
                               child: Container(
                                 decoration: const BoxDecoration(
                                   color: Colors.deepOrange,
@@ -251,7 +258,7 @@ class _RentState extends State<Rent> with TickerProviderStateMixin {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: const [
                                     Text(
-                                      'SHOW OFFERS',
+                                      'SHOW STATIONS',
                                       style: TextStyle(
                                           color: Colors.white, fontSize: 15),
                                     )

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ride_sharing_app/Filter.dart';
+import 'package:ride_sharing_app/RentCarDetails.dart';
 import 'CustomWidgets/ShowStationsTile.dart';
 
 class ShowStations extends StatelessWidget {
@@ -10,8 +12,13 @@ class ShowStations extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         toolbarHeight: MediaQuery.of(context).size.height * 0.07,
-        leading: const ImageIcon(
-          AssetImage('close.png'),
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: const ImageIcon(
+            AssetImage('close.png'),
+          ),
         ),
         title: const Text(
           "2/27 - 3/2 | MY CURRENT LOCATION",
@@ -32,15 +39,27 @@ class ShowStations extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
               child: Row(
-                children: const [
-                  Icon(
-                    Icons.filter_alt_outlined,
-                    color: Colors.white,
-                  ),
-                  Padding(padding: EdgeInsets.fromLTRB(0, 0, 15, 0)),
-                  Text(
-                    'FILTER',
-                    style: TextStyle(fontSize: 12, color: Colors.white),
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Filter()));
+                    },
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.filter_alt_outlined,
+                          color: Colors.white,
+                        ),
+                        Padding(padding: EdgeInsets.fromLTRB(0, 0, 15, 0)),
+                        Text(
+                          'FILTER',
+                          style: TextStyle(fontSize: 12, color: Colors.white),
+                        ),
+                      ],
+                    ),
                   ),
                   Padding(padding: EdgeInsets.fromLTRB(0, 0, 15, 0)),
                   Icon(
@@ -58,36 +77,60 @@ class ShowStations extends StatelessWidget {
             Expanded(
                 child: ListView(
               children: [
-                ShowStationsTile(
-                    carName: 'Renault Captur',
-                    carCompany: 'SUV',
-                    miles: '900',
-                    costPerDay: '90.11',
-                    totalCost: '270.32',
-                    carImage: Image.asset(
-                      'renault_captur2.png',
-                      height: MediaQuery.of(context).size.height * 0.18,
-                    )),
-                ShowStationsTile(
-                    carName: 'Peugeot',
-                    carCompany: 'Sedan',
-                    miles: '900',
-                    costPerDay: '90.56',
-                    totalCost: '271.67',
-                    carImage: Image.asset(
-                      'peugeot.png',
-                      height: MediaQuery.of(context).size.height * 0.18,
-                    )),
-                ShowStationsTile(
-                    carName: 'Renault Captur',
-                    carCompany: 'SUV',
-                    miles: '900',
-                    costPerDay: '200',
-                    totalCost: '270.67',
-                    carImage: Image.asset(
-                      'renault_captur2.png',
-                      height: MediaQuery.of(context).size.height * 0.18,
-                    ))
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const RentCarDetails()));
+                  },
+                  child: ShowStationsTile(
+                      carName: 'Renault Captur',
+                      carCompany: 'SUV',
+                      miles: '900',
+                      costPerDay: '90.11',
+                      totalCost: '270.32',
+                      carImage: Image.asset(
+                        'renault_captur2.png',
+                        height: MediaQuery.of(context).size.height * 0.18,
+                      )),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const RentCarDetails()));
+                  },
+                  child: ShowStationsTile(
+                      carName: 'Peugeot',
+                      carCompany: 'Sedan',
+                      miles: '900',
+                      costPerDay: '90.56',
+                      totalCost: '271.67',
+                      carImage: Image.asset(
+                        'peugeot.png',
+                        height: MediaQuery.of(context).size.height * 0.18,
+                      )),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const RentCarDetails()));
+                  },
+                  child: ShowStationsTile(
+                      carName: 'Renault Captur',
+                      carCompany: 'SUV',
+                      miles: '900',
+                      costPerDay: '200',
+                      totalCost: '270.67',
+                      carImage: Image.asset(
+                        'renault_captur2.png',
+                        height: MediaQuery.of(context).size.height * 0.18,
+                      )),
+                )
               ],
             ))
             // Expanded(
