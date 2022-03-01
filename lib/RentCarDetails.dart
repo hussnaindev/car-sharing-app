@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ride_sharing_app/MoreInfo.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'MoreInfo.dart';
 
 enum RentPayment { payLater, payNow }
 
@@ -21,7 +23,14 @@ class _RentCarDetailsState extends State<RentCarDetails> {
           toolbarHeight: MediaQuery.of(context).size.height * 0.08,
           backgroundColor: Colors.transparent,
           elevation: 0,
-          leading: const Icon(Icons.arrow_back),
+          leading: GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: const Icon(
+                Icons.arrow_back,
+                color: Colors.black,
+              )),
         ),
         body: SlidingUpPanel(
           minHeight: MediaQuery.of(context).size.height * 0.65,
@@ -29,7 +38,6 @@ class _RentCarDetailsState extends State<RentCarDetails> {
           renderPanelSheet: false,
           body: Container(
             height: MediaQuery.of(context).size.height * 0.27,
-            color: Colors.red,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [Image.asset('renault_captur2.png')],
@@ -74,7 +82,7 @@ class _RentCarDetailsState extends State<RentCarDetails> {
                         children: [
                           Column(
                             children: const [
-                              Icon(Icons.people_outline),
+                              Icon(Icons.people_outlined),
                               Text(
                                 '5 Seats',
                                 style: TextStyle(
@@ -84,7 +92,7 @@ class _RentCarDetailsState extends State<RentCarDetails> {
                           ),
                           Column(
                             children: const [
-                              Icon(Icons.ac_unit_outlined),
+                              Icon(Icons.book_outlined),
                               Text(
                                 'Manual',
                                 style: TextStyle(
@@ -94,7 +102,7 @@ class _RentCarDetailsState extends State<RentCarDetails> {
                           ),
                           Column(
                             children: const [
-                              Icon(Icons.ac_unit_outlined),
+                              Icon(Icons.sensor_door_outlined),
                               Text(
                                 '5 Doors',
                                 style: TextStyle(
@@ -102,15 +110,26 @@ class _RentCarDetailsState extends State<RentCarDetails> {
                               ),
                             ],
                           ),
-                          Column(
-                            children: const [
-                              Icon(Icons.ac_unit_outlined),
-                              Text(
-                                'More',
-                                style: TextStyle(
-                                    fontSize: 12, color: Colors.black),
-                              ),
-                            ],
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const MoreInfo()));
+                            },
+                            child: Column(
+                              children: const [
+                                Icon(
+                                  Icons.more_horiz_outlined,
+                                  color: Colors.deepOrange,
+                                ),
+                                Text(
+                                  'More',
+                                  style: TextStyle(
+                                      fontSize: 12, color: Colors.deepOrange),
+                                ),
+                              ],
+                            ),
                           )
                         ],
                       ),
@@ -136,7 +155,7 @@ class _RentCarDetailsState extends State<RentCarDetails> {
                       Padding(padding: EdgeInsets.fromLTRB(0, 20, 0, 0)),
                       Row(
                         children: [
-                          Icon(Icons.ac_unit_outlined),
+                          Icon(Icons.place_outlined),
                           Padding(padding: EdgeInsets.fromLTRB(10, 0, 0, 0)),
                           Text(
                             'London Heathrow AP T2, T3, T4',
@@ -147,7 +166,7 @@ class _RentCarDetailsState extends State<RentCarDetails> {
                       Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0)),
                       Row(
                         children: const [
-                          Icon(Icons.ac_unit_outlined),
+                          Icon(Icons.calendar_today_outlined),
                           Padding(padding: EdgeInsets.fromLTRB(10, 0, 0, 0)),
                           Text(
                             'Sun 2/27, 12:00PM - Wed 3/2, 12:00PM',
@@ -174,7 +193,6 @@ class _RentCarDetailsState extends State<RentCarDetails> {
                   ),
                 ),
                 Container(
-                  height: MediaQuery.of(context).size.height * 0.30,
                   padding: EdgeInsets.all(20),
                   decoration: BoxDecoration(
                       color: Colors.white,
@@ -234,7 +252,7 @@ class _RentCarDetailsState extends State<RentCarDetails> {
                   ),
                 ),
                 Container(
-                  height: MediaQuery.of(context).size.height * 0.30,
+                  height: MediaQuery.of(context).size.height * 0.25,
                   color: Color(0xff191919),
                   padding: EdgeInsets.all(20),
                   child: Column(
@@ -295,7 +313,7 @@ class _RentCarDetailsState extends State<RentCarDetails> {
                       Padding(padding: EdgeInsets.fromLTRB(0, 15, 0, 0)),
                       Container(
                         color: Colors.deepOrange,
-                        height: (MediaQuery.of(context).size.height * 0.09),
+                        height: (MediaQuery.of(context).size.height * 0.07),
                         width: (MediaQuery.of(context).size.width - 40),
                         alignment: Alignment.center,
                         child: Text(
