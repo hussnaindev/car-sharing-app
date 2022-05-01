@@ -72,7 +72,7 @@ class _FilterState extends State<Filter> {
                     color: Colors.grey,
                     fontWeight: FontWeight.bold),
               ),
-              Padding(padding: EdgeInsets.fromLTRB(0, 20, 0, 0)),
+              const Padding(padding: EdgeInsets.fromLTRB(0, 20, 0, 0)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -212,7 +212,7 @@ class _FilterState extends State<Filter> {
                           color: suitcases ? Colors.deepOrange : Colors.black,
                         ),
                       ),
-                      Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0)),
+                      const Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0)),
                       Text(
                         '2+ SUITCASES',
                         style: TextStyle(
@@ -281,7 +281,7 @@ class _FilterState extends State<Filter> {
                 value: _minimumAge,
                 onChanged: (double value) {
                   setState(() {
-                    _minimumAge = value;
+                    _minimumAge = value - 0.5;
 
                     _minimumAgeLabel = value.round();
                   });
@@ -299,10 +299,10 @@ class _FilterState extends State<Filter> {
         color: Colors.white,
         child: Container(
           height: MediaQuery.of(context).size.height * 0.08,
-          margin: EdgeInsets.all(25),
+          margin: const EdgeInsets.all(25),
           color: Colors.deepOrange,
           alignment: Alignment.center,
-          child: Text(
+          child: const Text(
             'SHOW 20 OFFERS',
             style: TextStyle(color: Colors.white),
           ),

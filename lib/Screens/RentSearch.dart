@@ -17,7 +17,7 @@ class _RentSearchState extends State<RentSearch> {
         minHeight: 530,
         body: Container(
           color: Colors.white,
-          padding: EdgeInsets.all(15),
+          padding: const EdgeInsets.all(15),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -25,14 +25,14 @@ class _RentSearchState extends State<RentSearch> {
                 onTap: () {
                   Navigator.pop(context);
                 },
-                child: ImageIcon(
+                child: const ImageIcon(
                   AssetImage("close.png"),
                 ),
               ),
-              Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0)),
+              const Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0)),
               Form(
                   child: TextFormField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color: Colors.deepOrange)),
                   label: Text('SEARCH FOR CITY OR PLACE'),
@@ -42,21 +42,21 @@ class _RentSearchState extends State<RentSearch> {
           ),
         ),
         header: Container(
-          padding: EdgeInsets.all(15),
+          padding: const EdgeInsets.all(15),
           width: MediaQuery.of(context).size.width,
           color: Colors.white,
-          child: Text(
+          child: const Text(
             'LIVE LOCATION',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
         panelBuilder: (ScrollController sc) => ListView(
-          padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
+          padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
           children: [
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   border: Border(bottom: BorderSide(color: Colors.grey))),
-              child: ListTile(
+              child: const ListTile(
                 leading: ImageIcon(
                   AssetImage("target.png"),
                   color: Colors.black,
@@ -68,28 +68,28 @@ class _RentSearchState extends State<RentSearch> {
               ),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(15, 40, 0, 40),
-              child: Text(
+              margin: const EdgeInsets.fromLTRB(15, 40, 0, 40),
+              child: const Text(
                 'HISTORY',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ),
             Container(
-              padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
-              decoration: BoxDecoration(
+              padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
+              decoration: const BoxDecoration(
                   border: Border(bottom: BorderSide(color: Colors.grey))),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
                       width: (MediaQuery.of(context).size.width) * 0.15,
-                      child: ImageIcon(AssetImage("wall-clock.png"))),
+                      child: const ImageIcon(AssetImage("wall-clock.png"))),
                   Container(
                     width: (MediaQuery.of(context).size.width) * 0.70,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           'Azadi Chowk Roundabout',
                           style: TextStyle(
                               color: Colors.black,
@@ -97,7 +97,7 @@ class _RentSearchState extends State<RentSearch> {
                               fontSize: 15),
                         ),
                         Container(
-                          child: Text(
+                          child: const Text(
                             'Azadi Chowk Roundabout, Walled City of Lahore, Lahore, Pakistan',
                             style: TextStyle(color: Colors.black, fontSize: 12),
                           ),
@@ -107,26 +107,26 @@ class _RentSearchState extends State<RentSearch> {
                   ),
                   Container(
                       width: (MediaQuery.of(context).size.width) * 0.15,
-                      child: Icon(Icons.favorite_outline))
+                      child: const Icon(Icons.favorite_outline))
                 ],
               ),
             ),
             Container(
-              padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-              decoration: BoxDecoration(
+              padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+              decoration: const BoxDecoration(
                   border: Border(bottom: BorderSide(color: Colors.grey))),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
                       width: (MediaQuery.of(context).size.width) * 0.15,
-                      child: ImageIcon(AssetImage("wall-clock.png"))),
+                      child: const ImageIcon(AssetImage("wall-clock.png"))),
                   Container(
                     width: (MediaQuery.of(context).size.width) * 0.70,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           'Rab Nawaz Quran Company',
                           style: TextStyle(
                               color: Colors.black,
@@ -134,7 +134,7 @@ class _RentSearchState extends State<RentSearch> {
                               fontSize: 15),
                         ),
                         Container(
-                          child: Text(
+                          child: const Text(
                             'Rab Nawaz Quran Company, Urdu Bazar Lahore, Pakistan',
                             style: TextStyle(color: Colors.black, fontSize: 12),
                           ),
@@ -144,7 +144,7 @@ class _RentSearchState extends State<RentSearch> {
                   ),
                   Container(
                       width: (MediaQuery.of(context).size.width) * 0.15,
-                      child: Icon(Icons.favorite_outline))
+                      child: const Icon(Icons.favorite_outline))
                 ],
               ),
             ),

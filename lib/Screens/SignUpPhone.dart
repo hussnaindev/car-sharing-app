@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'Rent.dart';
 
 class SignUpPhone extends StatefulWidget {
   const SignUpPhone({Key? key}) : super(key: key);
@@ -45,7 +46,7 @@ class _SignUpPhoneState extends State<SignUpPhone> {
             children: [
               Container(
                 width: 100,
-                margin: EdgeInsets.all(20),
+                margin: const EdgeInsets.all(20),
                 child: DropdownButton<String>(
                   value: dropdownValue,
                   underline: Container(
@@ -82,7 +83,10 @@ class _SignUpPhoneState extends State<SignUpPhone> {
             child: Align(
                 alignment: FractionalOffset.bottomCenter,
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => const Rent()));
+                  },
                   child: Container(
                     decoration: const BoxDecoration(
                         color: Colors.deepOrange,

@@ -222,7 +222,7 @@ class _SignUpPasswordState extends State<SignUpPassword> {
                         Icons.check,
                         color: specialChar ? Colors.black : Colors.grey,
                       ),
-                      Padding(padding: EdgeInsets.fromLTRB(5, 0, 5, 0)),
+                      const Padding(padding: EdgeInsets.fromLTRB(5, 0, 5, 0)),
                       Text(
                         'Atleast one special character',
                         style: TextStyle(
