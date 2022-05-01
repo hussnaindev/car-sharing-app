@@ -36,21 +36,21 @@ class ShowStationsTile extends StatelessWidget {
                   padding: const EdgeInsets.all(8),
                   color: Colors.black,
                   child: Text(carName,
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: 17,
                           color: Colors.deepOrange,
                           fontWeight: FontWeight.bold)),
                 ),
-                Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0)),
-                Text('or similar | SUV',
+                const Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0)),
+                const Text('or similar | SUV',
                     style: TextStyle(
                         color: Colors.black, fontWeight: FontWeight.bold)),
-                Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0)),
+                const Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0)),
                 Row(
                   children: [
-                    Icon(Icons.check),
+                    const Icon(Icons.check),
                     Text('incl. $miles miles',
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: Colors.black, fontWeight: FontWeight.bold))
                   ],
                 ),
@@ -79,7 +79,7 @@ class ShowStationsTile extends StatelessWidget {
                 ),
                 const Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0)),
                 Text('Rs $totalCost | total',
-                    style: TextStyle(
+                    style: const TextStyle(
                         color: Colors.black, fontWeight: FontWeight.bold))
               ],
             ),

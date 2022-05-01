@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ride_sharing_app/Filter.dart';
-import 'package:ride_sharing_app/RentCarDetails.dart';
-import 'CustomWidgets/ShowStationsTile.dart';
+import 'package:ride_sharing_app/CustomWidgets/ShowStationsTile.dart';
+import 'package:ride_sharing_app/Screens/Filter.dart';
+import 'package:ride_sharing_app/Screens/RentCarDetails.dart';
 
 class ShowStations extends StatelessWidget {
   const ShowStations({Key? key}) : super(key: key);
@@ -48,7 +48,7 @@ class ShowStations extends StatelessWidget {
                               builder: (context) => const Filter()));
                     },
                     child: Row(
-                      children: [
+                      children: const [
                         Icon(
                           Icons.filter_alt_outlined,
                           color: Colors.white,
@@ -61,13 +61,13 @@ class ShowStations extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Padding(padding: EdgeInsets.fromLTRB(0, 0, 15, 0)),
-                  Icon(
+                  const Padding(padding: EdgeInsets.fromLTRB(0, 0, 15, 0)),
+                  const Icon(
                     Icons.sort,
                     color: Colors.white,
                   ),
-                  Padding(padding: EdgeInsets.fromLTRB(0, 0, 15, 0)),
-                  Text(
+                  const Padding(padding: EdgeInsets.fromLTRB(0, 0, 15, 0)),
+                  const Text(
                     'SORT',
                     style: TextStyle(fontSize: 12, color: Colors.white),
                   )

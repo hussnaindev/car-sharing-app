@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ride_sharing_app/MoreInfo.dart';
+import 'package:ride_sharing_app/Screens/MoreInfo.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
-import 'MoreInfo.dart';
 
 enum RentPayment { payLater, payNow }
 
@@ -51,7 +50,7 @@ class _RentCarDetailsState extends State<RentCarDetails> {
                 Container(
                   height: MediaQuery.of(context).size.height * 0.25,
                   width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Colors.white,
                       border:
                           Border(bottom: BorderSide(color: Colors.black26))),
@@ -137,24 +136,24 @@ class _RentCarDetailsState extends State<RentCarDetails> {
                   ),
                 ),
                 Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Colors.white,
                       border:
                           Border(bottom: BorderSide(color: Colors.black26))),
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'BOOKING DETAILS',
                         style: TextStyle(
                             fontSize: 17,
                             fontWeight: FontWeight.bold,
                             color: Colors.black),
                       ),
-                      Padding(padding: EdgeInsets.fromLTRB(0, 20, 0, 0)),
+                      const Padding(padding: EdgeInsets.fromLTRB(0, 20, 0, 0)),
                       Row(
-                        children: [
+                        children: const [
                           Icon(Icons.place_outlined),
                           Padding(padding: EdgeInsets.fromLTRB(10, 0, 0, 0)),
                           Text(
@@ -163,7 +162,7 @@ class _RentCarDetailsState extends State<RentCarDetails> {
                           )
                         ],
                       ),
-                      Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0)),
+                      const Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0)),
                       Row(
                         children: const [
                           Icon(Icons.calendar_today_outlined),
@@ -174,7 +173,7 @@ class _RentCarDetailsState extends State<RentCarDetails> {
                           )
                         ],
                       ),
-                      Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0)),
+                      const Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0)),
                       Row(
                         children: const [
                           Icon(
@@ -193,29 +192,29 @@ class _RentCarDetailsState extends State<RentCarDetails> {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.all(20),
-                  decoration: BoxDecoration(
+                  padding: const EdgeInsets.all(20),
+                  decoration: const BoxDecoration(
                       color: Colors.white,
                       border:
                           Border(bottom: BorderSide(color: Colors.black26))),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'PAYMENT',
                         style: TextStyle(
                             fontSize: 17,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
-                      Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0)),
+                      const Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0)),
                       ListTile(
-                        title: Text(
+                        title: const Text(
                           'PAY LATER  + Rs 26.77',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, color: Colors.black),
                         ),
-                        subtitle: Text(
+                        subtitle: const Text(
                           'Make Changes to your booking and cancel for free anytime',
                           style: TextStyle(color: Colors.black, fontSize: 12),
                         ),
@@ -228,14 +227,14 @@ class _RentCarDetailsState extends State<RentCarDetails> {
                           ),
                         ),
                       ),
-                      Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0)),
+                      const Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0)),
                       ListTile(
-                        title: Text(
+                        title: const Text(
                           'PAY NOW',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, color: Colors.black),
                         ),
-                        subtitle: Text(
+                        subtitle: const Text(
                             'Get the best price by paying in advance. Cancellation fee may apply',
                             style:
                                 TextStyle(color: Colors.black, fontSize: 12)),
@@ -253,8 +252,8 @@ class _RentCarDetailsState extends State<RentCarDetails> {
                 ),
                 Container(
                   height: MediaQuery.of(context).size.height * 0.25,
-                  color: Color(0xff191919),
-                  padding: EdgeInsets.all(20),
+                  color: const Color(0xff191919),
+                  padding: const EdgeInsets.all(20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -264,14 +263,14 @@ class _RentCarDetailsState extends State<RentCarDetails> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
+                              const Text(
                                 'Total',
                                 style: TextStyle(color: Colors.white),
                               ),
-                              Padding(
+                              const Padding(
                                   padding: EdgeInsets.fromLTRB(0, 10, 0, 0)),
                               Row(
-                                children: [
+                                children: const [
                                   Icon(
                                     Icons.keyboard_arrow_right,
                                     color: Colors.deepOrange,
@@ -289,7 +288,7 @@ class _RentCarDetailsState extends State<RentCarDetails> {
                             children: [
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
+                                children: const [
                                   Text(
                                     'Rs',
                                     style: TextStyle(color: Colors.white),
@@ -301,27 +300,27 @@ class _RentCarDetailsState extends State<RentCarDetails> {
                                       style: TextStyle(color: Colors.white))
                                 ],
                               ),
-                              Padding(
+                              const Padding(
                                   padding: EdgeInsets.fromLTRB(0, 10, 0, 0)),
-                              Text('Rs 202.98',
+                              const Text('Rs 202.98',
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 12))
                             ],
                           )
                         ],
                       ),
-                      Padding(padding: EdgeInsets.fromLTRB(0, 15, 0, 0)),
+                      const Padding(padding: EdgeInsets.fromLTRB(0, 15, 0, 0)),
                       Container(
                         color: Colors.deepOrange,
                         height: (MediaQuery.of(context).size.height * 0.07),
                         width: (MediaQuery.of(context).size.width - 40),
                         alignment: Alignment.center,
-                        child: Text(
+                        child: const Text(
                           'CONTINUE',
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
-                      Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0))
+                      const Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0))
                     ],
                   ),
                 )

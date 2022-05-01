@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:ride_sharing_app/ShowStations.dart';
+import 'package:ride_sharing_app/Screens/Bookings.dart';
+import 'package:ride_sharing_app/Screens/ShowStations.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'src/locations.dart' as locations;
+
 import 'RentSearch.dart';
+import 'Settings.dart';
 
 class Rent extends StatefulWidget {
   const Rent({Key? key}) : super(key: key);
@@ -26,10 +28,11 @@ class _RentState extends State<Rent> with TickerProviderStateMixin {
         initialDate: selectedDate,
         firstDate: DateTime(2015, 8),
         lastDate: DateTime(2101));
-    if (picked != null && picked != selectedDate)
+    if (picked != null && picked != selectedDate) {
       setState(() {
         selectedDate = picked;
       });
+    }
   }
 
   final LatLng _center = const LatLng(31.579646, 74.354349);
@@ -41,7 +44,7 @@ class _RentState extends State<Rent> with TickerProviderStateMixin {
     // );
     setState(() {
       _markers.clear();
-      _markers['Anarkali'] = Marker(
+      _markers['Anarkali'] = const Marker(
         markerId: MarkerId(
           'Anarkali',
         ),
@@ -49,7 +52,7 @@ class _RentState extends State<Rent> with TickerProviderStateMixin {
         infoWindow: InfoWindow(title: 'Car', snippet: 'Available'),
         icon: BitmapDescriptor.defaultMarker,
       );
-      _markers['Sultanpura'] = Marker(
+      _markers['Sultanpura'] = const Marker(
         markerId: MarkerId(
           'Sultanpura',
         ),
@@ -58,7 +61,7 @@ class _RentState extends State<Rent> with TickerProviderStateMixin {
         icon: BitmapDescriptor.defaultMarker,
       );
     });
-    _markers['Azadi Chowk'] = Marker(
+    _markers['Azadi Chowk'] = const Marker(
       markerId: MarkerId(
         'Azadi Chowk',
       ),
@@ -100,15 +103,15 @@ class _RentState extends State<Rent> with TickerProviderStateMixin {
                 width: 60,
                 height: 3,
                 alignment: Alignment.center,
-                margin: EdgeInsets.fromLTRB(0, 10, 0, 5),
-                child: Text(''),
+                margin: const EdgeInsets.fromLTRB(0, 10, 0, 5),
+                child: const Text(''),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
                     color: Colors.grey),
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                color: Color(0xffffffff),
+                margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+                color: const Color(0xffffffff),
                 height: 30,
                 child: Row(
                   children: [
@@ -155,8 +158,8 @@ class _RentState extends State<Rent> with TickerProviderStateMixin {
                   children: [
                     Form(
                       child: Container(
-                        margin: EdgeInsets.fromLTRB(30, 0, 30, 0),
-                        padding: EdgeInsets.fromLTRB(0, 40, 0, 40),
+                        margin: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+                        padding: const EdgeInsets.fromLTRB(0, 40, 0, 40),
                         height: MediaQuery.of(context).size.height * 0.50,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -169,7 +172,7 @@ class _RentState extends State<Rent> with TickerProviderStateMixin {
                                         builder: (context) =>
                                             const RentSearch()));
                               },
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                   border: UnderlineInputBorder(),
                                   label: Text(
                                     'SEARCH FOR A CITY OR PLACE',
@@ -193,7 +196,7 @@ class _RentState extends State<Rent> with TickerProviderStateMixin {
                                     },
                                   ),
                                 ),
-                                Padding(
+                                const Padding(
                                     padding: EdgeInsets.fromLTRB(0, 0, 5, 0)),
                                 Text('Return at pick-up location')
                               ],
@@ -210,7 +213,7 @@ class _RentState extends State<Rent> with TickerProviderStateMixin {
                                     },
                                     initialValue: "${selectedDate.toLocal()}"
                                         .split(' ')[0],
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                         border: UnderlineInputBorder(),
                                         label: Text(
                                           'PICK-UP DATE',
@@ -220,7 +223,7 @@ class _RentState extends State<Rent> with TickerProviderStateMixin {
                                         )),
                                   ),
                                 ),
-                                Padding(
+                                const Padding(
                                     padding: EdgeInsets.fromLTRB(10, 0, 10, 0)),
                                 Container(
                                   width:
@@ -228,7 +231,7 @@ class _RentState extends State<Rent> with TickerProviderStateMixin {
                                           0.50,
                                   child: TextFormField(
                                     initialValue: "2022-02-25".split(' ')[0],
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                         border: UnderlineInputBorder(),
                                         label: Text(
                                           'RETURN DATE',
@@ -252,7 +255,7 @@ class _RentState extends State<Rent> with TickerProviderStateMixin {
                                 decoration: const BoxDecoration(
                                   color: Colors.deepOrange,
                                 ),
-                                margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                                margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                                 height: 50,
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -374,6 +377,10 @@ class _RentState extends State<Rent> with TickerProviderStateMixin {
                     onTap: () {
                       setState(() {
                         currentBottomNav = 4;
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Bookings()));
                       });
                     },
                     child: Container(

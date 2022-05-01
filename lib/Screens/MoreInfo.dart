@@ -22,7 +22,7 @@ class MoreInfo extends StatelessWidget {
       ),
       body: Container(
         color: Colors.white,
-        padding: EdgeInsets.all(15),
+        padding: const EdgeInsets.all(15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
